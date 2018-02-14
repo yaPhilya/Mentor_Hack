@@ -16,6 +16,7 @@ def userpage(request, u_id):
     # else:
     #     form = ResumeCreationForm()
     resumes = Resume.objects.filter(user_id=user.id)
+    print(type(resumes))
     return render(request, 'user_page.html', {'u': user, 'resumes': resumes})
 
 

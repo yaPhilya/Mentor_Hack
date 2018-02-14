@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
+{% extends "main.html" %}
+{% block body %}
+<html>
 <body>
     {{ u.username }}
     {% if u.id == user.id %}
         <a href="{% url "createresume"%}">Create resume</a>
     {% endif %}
     {% for r in resumes %}
+        <br>
         {% if r.type == '1' %}
-            Я менор
+            I'm a mentor
         {% endif %}
         {% if r.type == '2' %}
-            Я ученик
+            I'm a mentee
         {% endif %}
         {% if r.type == '3' %}
-            У меня есть стартап, ищу сокомандника
+            I've a startup, looking for a collaborator
         {% endif %}
         {{ r.text }}
+        <a href="{% url "results" resume_id=r.id %}">Search</a>
+         <br/>
     {% endfor %}
 </body>
 </html>
+{% endblock %}

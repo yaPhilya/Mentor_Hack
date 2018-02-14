@@ -11,4 +11,4 @@ class Resume(models.Model):
     CHOICES_TYPE = ((ch1, 'Я ментор'), (ch2, 'Я ученик'), (ch3, 'У меня есть стартап, ищу сокомандника'))
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     type = models.CharField(max_length=1, choices=CHOICES_TYPE)
-    text = models.CharField(max_length=400)
+    text = models.CharField(max_length=800)

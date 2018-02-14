@@ -1,24 +1,22 @@
 from django.contrib.auth import get_user_model, authenticate, login
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-# from django.contrib.auth.forms import UserCreationForm as BaseUserCreationForm
 import django.contrib.auth.forms as forms
-# from User.form import UserForm
+from Resume.models import Resume
+from User.models import User
 
 
-# def signup(request):
-#     if request.method == 'POST':
-#         form = UserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return redirect('main.html')
-#     else:
-#         form = UserForm()
-#     return render(request, 'signup.html', {'form': form})
+def userpage(request, u_id):
+    user = User.objects.get(id=u_id)
+    # if request.method == 'POST':
+    #     form = ResumeCreationForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         form.instance.user = user
+    #         return redirect('users:userpage', {'u': user})
+    # else:
+    #     form = ResumeCreationForm()
+    resumes = Resume.objects.filter(user_id=user.id)
+    return render(request, 'user_page.html', {'u': user, 'resumes': resumes})
 
 
 class UserCreationForm(forms.UserCreationForm):
@@ -40,13 +38,6 @@ class UserCreationForm(forms.UserCreationForm):
                 username = form.cleaned_data.get('username')
                 raw_password = form.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
-                # username = data['username']
-                # if (data['password1'] == data['password2']):
-                #     raw_password = data['password1']
-                # else:
-                #     return HttpResponse("Passwords don't match")
-                #
-                # user = authenticate(username=username, password=raw_password)
                 login(request, user)
                 return redirect('main')
         else:

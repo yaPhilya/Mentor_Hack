@@ -19,7 +19,6 @@ from django.contrib.auth.views import LogoutView, LoginView
 
 from Main.views import main
 from Resume.views import NewResume
-from User.models import User
 from User.views import UserCreationForm, AuthenticationForm
 
 urlpatterns = [
@@ -32,3 +31,6 @@ urlpatterns = [
     url(r'^users/', include('User.urls', namespace='users')),
     url(r'^createresume', NewResume.as_view(), name='createresume')
 ]
+# urlpatterns += [
+#     url(r'^static/(?P<path>.*)$','django.views.static.serve')
+# ]

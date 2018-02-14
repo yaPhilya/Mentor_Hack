@@ -9,9 +9,13 @@ project - frontend часть сайта
 
 ---
 
-Запуск:
-Linux строчкой в командной строке:
+### Запуск:
+
+#### Linux строчкой в командной строке:
+
 sudo ./project/manage.py runserver 8080
-Windows:
+
+#### Windows:
+
 ???
 

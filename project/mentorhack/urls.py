@@ -1,8 +1,10 @@
+
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView, LoginView
 
 from Main.views import main, results
+
 from Resume.views import NewResume
 from User.views import UserCreationForm, AuthenticationForm
 

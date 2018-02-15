@@ -12,7 +12,6 @@ class ResumeCreationForm(forms.ModelForm):
                     (ch3, 'I\'ve a startup, looking for a collaborator'),
                     (ch4, 'I\'m looking for a team and a project to join'))
     type = forms.ChoiceField(choices=CHOICES_TYPE, widget=forms.RadioSelect())
-
     class Meta:
         model = Resume
         fields = ['type', 'text']

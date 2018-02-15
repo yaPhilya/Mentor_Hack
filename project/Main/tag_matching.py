@@ -209,6 +209,9 @@ def get_cosine_soft(vec1, vec2):
 
 
 # проверка человека ------------------------------------------------------------
+def list_to_vector(text):
+    return Counter(text)
+
 
 def check_person(person, x):
     w0 = 0

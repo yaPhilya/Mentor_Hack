@@ -82,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mentorhack',
-        'USER': 'irina',
-        'PASSWORD': '93506',
+        'USER': 'phil',
+        'PASSWORD': 'MementO_MorI',
         'HOST': 'localhost',
     }
 }
@@ -132,6 +132,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/'
 
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+#import dj_database_url
+#db_from_env = dj_database_url.config()
+#DATABASES['default'].update(db_from_env)

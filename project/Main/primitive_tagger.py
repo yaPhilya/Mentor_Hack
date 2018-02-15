@@ -44,11 +44,11 @@ all_tags = tags_stack.copy()
 all_tags.extend(tags_free.copy())
 all_tags.extend(tags_start.copy())
 
-all_data = pd.DataFrame(columns=['Body', 'Tag'])
+all_read_post = pd.DataFrame(columns=['Body', 'Tag'])
 
-all_data = all_data.append(data_free)
-all_data = all_data.append(data_start)
-all_data = all_data.append(data_stack)
+all_read_post = all_read_post.append(data_free)
+all_read_post = all_read_post.append(data_start)
+all_read_post = all_read_post.append(data_stack)
 
 from sklearn.cross_validation import train_test_split
 
@@ -66,7 +66,7 @@ def process_tags(tags):
     return tmp
 
 
-train_posts, test_posts, train_tags, test_tags = train_test_split(all_data.Body, all_data.Tag,
+train_posts, test_posts, train_tags, test_tags = train_test_split(all_read_post.Body, all_read_post.Tag,
                                                                   random_state=42, test_size=0.2)
 
 test_tags = process_tags(test_tags)
@@ -113,17 +113,21 @@ label_from_prediction = np.array(label_from_prediction)
 model = keras.models.load_model('../models/primitive_model')
 
 
-def tagger_unpacked(input_str, model, tokenizer, pred_to_tag):
-    pred = model.predict(tokenizer.texts_to_matrix([input_str]))
-    pred_tags = pred_to_tag[pred.ravel() > 0.2]
+def tagger_unpacked(input_str):
+    print('Test input of NN:', input_str)
+    tokens = tokenize.texts_to_matrix([input_str])
+    print('Test shape of tokenized text:', tokens.shape)
+    pred = model.predict(tokens)
+    pred_tags = label_from_prediction[pred.ravel() > 0.1]
     return ','.join(pred_tags)
 
 
 def custom_tagger(input_str):
-    return tagger_unpacked(input_str, model, tokenize, label_from_prediction)
+    return tagger_unpacked(input_str)
 
-
+print(custom_tagger(' c++,java,english,programming,math'))
 ''' usage
 str - string you want to process 
 tagger(str, model, tokenize, label_from_prediction)
 '''
+#print(custom_tagger(' c++,java,english,programming,math'))

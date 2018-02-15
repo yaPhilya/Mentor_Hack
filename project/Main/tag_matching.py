@@ -73,8 +73,10 @@ def sentence_similarity(sentence1, sentence2):
         if best_score is not None:
             score += best_score
             count += 1
-
-    score /= count
+    if count != 0:
+        score /= count
+    else:
+        score = 0
     return score
 
 

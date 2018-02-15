@@ -5,7 +5,8 @@
     {% for u in users %}
         {% for r in resumes %}
             {% if r.user_id == u.id %}
-                {{ u.username }}
+                <h2>{{ u.username }}</h2>
+                <br>
                 {% if r.type == '1' %}
                     I'm a mentor
                 {% endif %}
@@ -15,7 +16,24 @@
                 {% if r.type == '3' %}
                     I've a startup, looking for a collaborator
                 {% endif %}
+                {% if r.type == '4' %}
+                    I'm looking for a project to join
+                {% endif %}
+                <br>
+                {% if r.type == '1' %}
+                    Can teach you:
+                {% endif %}
+                {% if r.type == '2' %}
+                    Would like to take help with:
+                {% endif %}
+                {% if r.type == '3' %}
+                    My startup:
+                {% endif %}
+                {% if r.type == '4' %}
+                    Preferable role in project:
+                {% endif %}
                 {{ r.text }}
+                <br>
             {% endif %}
         {% endfor %}
     {% endfor %}

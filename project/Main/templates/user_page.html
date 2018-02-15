@@ -17,10 +17,14 @@
         {% if r.type == '3' %}
             I've a startup, looking for a collaborator
         {% endif %}
+        {% if r.type == '4' %}
+            I'm looking for a project to join
+        {% endif %}
        <br>
         {{ r.text }}
         <br>
         <a href="{% url "results" resume_id=r.id %}">Search</a>
+        <br>
 
     {% endfor %}
 </body>

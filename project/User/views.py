@@ -16,6 +16,7 @@ def userpage(request, u_id):
     # else:
     #     form = ResumeCreationForm()
     resumes = Resume.objects.filter(user_id=user.id)
+    print(type(resumes))
     return render(request, 'user_page.html', {'u': user, 'resumes': resumes})
 
 
@@ -34,6 +35,7 @@ class UserCreationForm(forms.UserCreationForm):
         if request.method == 'POST':
             form = UserCreationForm(request.POST)
             if form.is_valid():
+                form.instance.skills_processed = "0"
                 form.save()
                 username = form.cleaned_data.get('username')
                 raw_password = form.cleaned_data.get('password1')

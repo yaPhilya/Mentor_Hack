@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-
-</head>
-<body>
-    <h2>Login</h2>
-    <form method="post">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit">Send!</button>
-    </form>
-</body>
-</html>
+{% extends "main.html" %}
+{% block body %}
+    <html>
+    <body>
+        <h2>Login</h2>
+        <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Send!</button>
+        </form>
+    </body>
+    </html>
+{% endblock %}

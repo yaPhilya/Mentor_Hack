@@ -7,7 +7,10 @@ class ResumeCreationForm(forms.ModelForm):
     ch1 = '1'
     ch2 = '2'
     ch3 = '3'
-    CHOICES_TYPE = ((ch1, 'Я ментор'), (ch2, 'Я ученик'), (ch3, 'У меня есть стартап, ищу сокомандника'))
+    ch4 = '4'
+    CHOICES_TYPE = ((ch1, 'I\'m a mentor'), (ch2, 'I\'m a mentee'),
+                    (ch3, 'I\'ve a startup, looking for a collaborator'),
+                    (ch4, 'I\'m looking for a team and a project to join'))
     type = forms.ChoiceField(choices=CHOICES_TYPE, widget=forms.RadioSelect())
     class Meta:
         model = Resume

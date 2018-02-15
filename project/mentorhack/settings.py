@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'Skill'
 ]
 
+app_name="project"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -130,6 +132,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/'
 
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+#import dj_database_url
+#db_from_env = dj_database_url.config()
+#DATABASES['default'].update(db_from_env)

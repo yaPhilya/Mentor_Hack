@@ -74,5 +74,7 @@ class User(AbstractUser):
     location = models.CharField(max_length=3, choices=CHOISES_LOCATION, default=usa)
     # username = models.CharField(max_length=30, unique=True)
     # password = models.TextField()
-    skills = models.CharField(max_length=400)
+    skills = models.TextField(max_length=600)
+    was_processed = models.BooleanField(default=False)
+    skills_processed = models.TextField(max_length=600)
     skills_key = models.ManyToManyField(Skill)

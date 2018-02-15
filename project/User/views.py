@@ -35,6 +35,7 @@ class UserCreationForm(forms.UserCreationForm):
         if request.method == 'POST':
             form = UserCreationForm(request.POST)
             if form.is_valid():
+                form.instance.skills_processed = "0"
                 form.save()
                 username = form.cleaned_data.get('username')
                 raw_password = form.cleaned_data.get('password1')

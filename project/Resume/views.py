@@ -14,5 +14,7 @@ class NewResume(FormView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        form.instance.text_filtered = "0"
+        # form.instance.was_processed = '0'
         form.save()
         return super(NewResume, self).form_valid(form)

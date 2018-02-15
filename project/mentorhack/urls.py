@@ -6,8 +6,9 @@ from django.contrib.auth.views import LogoutView, LoginView
 from Main.views import main, results
 
 from Resume.views import NewResume
-from User.views import UserCreationForm, AuthenticationForm
+from User.views import UserCreationForm, AuthenticationForm, userpage
 
+# app_name = 'mentorhack'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', main, name='main'),
@@ -15,7 +16,8 @@ urlpatterns = [
     # url(r'^login/$', AuthenticationForm.login, name='login'),
     url(r'^login/$', LoginView.as_view(template_name='login.html'), name="login"),
     url(r'^logout/$', LogoutView.as_view(template_name='logout.html'), name='logout'),
-    url(r'^users/', include('User.urls', namespace='users')),
+    # url(r'^users/', include('User.urls', namespace='users')),
+    url(r'^userpage/(?P<u_id>\d+)/$', userpage, name='userpage'),
     url(r'^createresume', NewResume.as_view(), name='createresume'),
     url(r'^results/(?P<resume_id>\d+)/$', results, name='results')
 ]

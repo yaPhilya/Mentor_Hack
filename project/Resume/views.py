@@ -10,7 +10,7 @@ class NewResume(FormView):
     # success_url = 'users:userpage'
 
     def get_success_url(self):
-        return reverse("users:userpage", kwargs={'u_id': self.request.user.id})
+        return reverse("userpage", kwargs={'u_id': self.request.user.id})
 
     def form_valid(self, form):
         form.instance.user = self.request.user

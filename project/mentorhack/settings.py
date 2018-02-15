@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'Skill'
 ]
 
+app_name="project"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -2,12 +2,12 @@
 {% block body %}
 <html>
 <body>
-    {{ u.username }}
+    <p><h2>{{ u.username }}</h2></p>
     {% if u.id == user.id %}
         <a href="{% url "createresume"%}">Create resume</a>
+        <br>
     {% endif %}
     {% for r in resumes %}
-        <br>
         {% if r.type == '1' %}
             I'm a mentor
         {% endif %}
@@ -17,9 +17,11 @@
         {% if r.type == '3' %}
             I've a startup, looking for a collaborator
         {% endif %}
+       <br>
         {{ r.text }}
+        <br>
         <a href="{% url "results" resume_id=r.id %}">Search</a>
-         <br/>
+
     {% endfor %}
 </body>
 </html>

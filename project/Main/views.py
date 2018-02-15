@@ -13,7 +13,8 @@ from Resume.models import Resume
 from User.models import User
 from django.db.models import Q
 from nltk.corpus import stopwords
-
+import tensorflow
+import keras
 
 stop_words = list(stopwords.words('english'))
 # stop_words = list(get_stop_words('en'))  # About 900 stopwords
